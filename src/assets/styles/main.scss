@@ -69,8 +69,6 @@ body {
     margin-top: 50px;
     height: 300px;
     position: relative;
-    .icon-container {
-    }
   }
 }
 
@@ -122,9 +120,7 @@ body {
         width: 140px;
         height: 140px;
       }
-      &.win {
-        // background-color: lighten($color: hsl(237, 49%, 15%), $amount: 10%);
-      }
+
       .circle {
         height: 120px;
         width: 120px;
@@ -200,8 +196,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    img {
-    }
   }
 }
 
