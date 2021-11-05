@@ -1,0 +1,252 @@
+@import "./variable";
+@import "./breakpoint";
+
+body {
+  background: -webkit-linear-gradient(to right, $RadialGradient);
+  background: linear-gradient(to right, $RadialGradient);
+  min-height: 100vh;
+  color: white;
+  font-family: $font-stack;
+}
+
+.container {
+  @include xs {
+    width: 95%;
+    margin: auto;
+    padding: 10px 0;
+    text-align: center;
+  }
+  @include md {
+    width: 70%;
+  }
+}
+
+.result-container {
+  @include xs {
+    width: 90%;
+    margin: auto;
+    border: 1px solid $HeaderOutline;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .score {
+      background-color: white;
+      color: $DarkText;
+      padding: 15px;
+      border-radius: 10px;
+      h3 {
+        margin-bottom: 5px;
+      }
+    }
+  }
+  @include md {
+    width: 80%;
+  }
+}
+
+.btn-container {
+  @include xs {
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+  }
+  @include md {
+    text-align: right;
+  }
+}
+
+.play-ground {
+  @include xs {
+    margin: auto;
+    background: url(/src/assets/images/bg-pentagon.svg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 320px;
+    margin-top: 50px;
+    height: 300px;
+    position: relative;
+    .icon-container {
+    }
+  }
+}
+
+.compare-ground {
+  @include xs {
+    margin: auto;
+    width: 400px;
+    margin-top: 50px;
+    height: 300px;
+
+    .show-case {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+    .compare-text {
+      margin-top: 40px;
+      background-color: darken($color: hsl(237, 49%, 15%), $amount: 2%);
+      padding: 10px;
+      border-radius: 10px;
+      p {
+        font-size: 35px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      button {
+        font-size: 15px;
+        padding: 10px 40px;
+        background-color: white;
+        border: none;
+        color: $DarkText;
+        font-weight: bold;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 0 5px;
+      }
+    }
+    .block {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      .icon-container {
+        width: 140px;
+        height: 140px;
+      }
+      &.win {
+        // background-color: lighten($color: hsl(237, 49%, 15%), $amount: 10%);
+      }
+      .circle {
+        height: 120px;
+        width: 120px;
+        border-radius: 100%;
+        background-color: darken($color: hsl(237, 49%, 15%), $amount: 5%);
+      }
+      p {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+.icon-container {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  &.in {
+    position: absolute;
+  }
+  &.rock {
+    background: -webkit-linear-gradient(to right, $RockGradient);
+    background: linear-gradient(to right, $RockGradient);
+    &.in {
+      bottom: -40px;
+      right: 0px;
+    }
+  }
+  &.scissor {
+    background: -webkit-linear-gradient(to right, $ScissorsGradient);
+    background: linear-gradient(to right, $ScissorsGradient);
+    &.in {
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  &.paper {
+    background: -webkit-linear-gradient(to right, $PaperGradient);
+    background: linear-gradient(to right, $PaperGradient);
+    &.in {
+      top: 45%;
+      right: -30px;
+      transform: translateY(-50%);
+    }
+  }
+  &.spock {
+    background: -webkit-linear-gradient(to right, $Cyan);
+    background: linear-gradient(to right, $Cyan);
+    &.in {
+      top: 45%;
+      left: -30px;
+      transform: translateY(-50%);
+    }
+  }
+  &.lizard {
+    background: -webkit-linear-gradient(to right, $LizardGradient);
+    background: linear-gradient(to right, $LizardGradient);
+    &.in {
+      bottom: -40px;
+      left: -0px;
+    }
+  }
+  .icon {
+    background-color: white;
+    border-radius: 100%;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+    }
+  }
+}
+
+.rules {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+
+  .rule-img {
+    @include xs {
+      width: 200px;
+    }
+    @include md {
+      width: 300px;
+    }
+  }
+
+  h3 {
+    color: $DarkText;
+    margin-bottom: 50px;
+    font-size: 30px;
+    font-weight: 600;
+  }
+  .close {
+    margin-top: 50px;
+    width: 30px;
+    cursor: pointer;
+  }
+}
+
+.btn-show-rule {
+  font-size: 15px;
+  border: 1px solid white;
+  padding: 10px 40px;
+  background-color: transparent;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 30px;
+}
